@@ -49,7 +49,7 @@ node[cookbook_name]['components'].each_pair do |comp, config|
   config = config.merge(override, &merge_proc)
 
   file configfile do
-    content config.to_yaml
+    content JSON.parse(config.to_json).to_yaml
     mode '0644'
     not_if { config.empty? }
   end
@@ -65,7 +65,7 @@ if prometheus['install?']
   prometheus['rules'].each do |file, rules|
     file "#{prefix_dir}/#{rules_dir}/#{file}" do
       mode '0644'
-      content "#{rules.to_h.to_yaml}\n"
+      content "#{JSON.parse(rules.to_json).to_yaml}\n"
       notifies(
         :reload_or_try_restart, 'systemd_unit[prometheus.service]', :delayed
       )
