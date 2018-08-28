@@ -28,13 +28,13 @@ file = '%<comp>s-%<version>s.linux-amd64.tar.gz'
 default[cookbook_name]['components'] = {
   'prometheus' => {
     'install?' => false,
-    'version' => '2.2.1',
-    'sha' => 'ec1798dbda1636f49d709c3931078dc17eafef76c480b67751aa09828396cf31'
+    'version' => '2.3.2',
+    'sha' => '351931fe9bb252849b7d37183099047fbe6d7b79dcba013fb6ae19cc1bbd8552'
   },
   'alertmanager' => {
     'install?' => false,
-    'version' => '0.14.0',
-    'sha' => 'caddbbbe3ef8545c6cefb32f9a11207ae18dcc788e8d0fb19659d88c58d14b37'
+    'version' => '0.15.2',
+    'sha' => '79ee23ab2f0444f592051995728ba9e0a7547cc3b9162301e3152dbeaf568d2e'
   },
   'blackbox_exporter' => {
     'install?' => false,
@@ -43,11 +43,13 @@ default[cookbook_name]['components'] = {
   },
   'consul_exporter' => {
     'install?' => false,
-    'version' => '0.3.0'
+    'version' => '0.4.0',
+    'sha' => 'ff77c03de67cf381f67480b5be6699901785a34145c518c3484ae3e5b8440d08'
   },
   'graphite_exporter' => {
     'install?' => false,
-    'version' => '0.2.0'
+    'version' => '0.3.0',
+    'sha' => '2ef1f11cbf928c003bf8c015b4b4ba3e7bb5ff26d13a6fb51c39236e66b9b588'
   },
   'haproxy_exporter' => {
     'install?' => false,
@@ -61,23 +63,23 @@ default[cookbook_name]['components'] = {
   },
   'mysqld_exporter' => {
     'install?' => false,
-    'version' => '0.10.0',
-    'sha' => '32797bc96aa00bb20e0b9165f6d3887fe9612b474061ee7de0189f5377b61859'
+    'version' => '0.11.0',
+    'sha' => 'b53ad48ff14aa891eb6a959730ffc626db98160d140d9a66377394714c563acf'
   },
   'node_exporter' => {
     'install?' => false,
-    'version' => '0.15.2',
-    'sha' => '1ce667467e442d1f7fbfa7de29a8ffc3a7a0c84d24d7c695cc88b29e0752df37'
+    'version' => '0.16.0',
+    'sha' => 'e92a601a5ef4f77cce967266b488a978711dabc527a720bea26505cba426c029'
   },
   'pushgateway' => {
     'install?' => false,
-    'version' => '0.4.0',
-    'sha' => 'e1ce58b3f2c44816e748278434d6fc91e530da77dcc34b1246e1a0f25314831f'
+    'version' => '0.5.2',
+    'sha' => 'd4aeb15b9667bae79170d4f12b4afa20dc29850aeac2ce071479d93057fb5c3b'
   },
   'statsd_exporter' => {
     'install?' => false,
-    'version' => '0.6.0',
-    'sha' => '8ac4013400026ed143aaddc495d19a2d6290f45bc8fdc85ad9970d3e45adaeb2'
+    'version' => '0.7.0',
+    'sha' => 'cd8e7fadda7e6a390208916bdbab13b21624bd0a80e928ddccdc1cf33ec463e9'
   }
 }
 
