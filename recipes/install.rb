@@ -52,7 +52,7 @@ node[cookbook_name]['components'].each_pair do |comp, config|
 
   # Extract all config with word 'path' in their key so we can create dirs
   cli_opts = config['cli_opts'] || {}
-  paths = cli_opts.keys.keep_if { |k| k.match?(/^(.*\.)?path(\..*)?$/) }
+  paths = cli_opts.keys.keep_if { |k| k.match(/^(.*\.)?path(\..*)?$/) }
   paths.each do |path|
     directory "#{cookbook_name}:#{path}:#{cli_opts[path]}" do
       path cli_opts[path]
