@@ -20,10 +20,17 @@ node[cookbook_name]['components'].each_pair do |comp, config|
   next unless config['install?']
   configfile = "#{node[cookbook_name]['prefix_home']}/#{comp}/#{comp}.yml"
 
-  systemd_unit "#{comp}.service" do
-    content config['unit']
-    action %i[create enable start]
-    subscribes :reload_or_try_restart, "file[#{configfile}]" if auto_restart
-    subscribes :try_restart, "systemd_unit[#{comp}.service]" if auto_restart
+  if node['platform'] == "ubuntu" && node['platform_version'].to_f <= 14.10
+    service comp do
+      supports restart: true, status: true, reload: true
+      action [:enable]
+    end
+  else
+    systemd_unit "#{comp}.service" do
+      content config['unit']
+      action %i[create enable start]
+      subscribes :reload_or_try_restart, "file[#{configfile}]" if auto_restart
+      subscribes :try_restart, "systemd_unit[#{comp}.service]" if auto_restart
+    end
   end
 end
