@@ -66,9 +66,15 @@ if prometheus['install?']
     file "#{prefix_dir}/#{rules_dir}/#{file}" do
       mode '0644'
       content "#{JSON.parse(rules.to_json).to_yaml}\n"
-      notifies(
-        :reload_or_try_restart, 'systemd_unit[prometheus.service]', :delayed
-      )
+      if node['platform'] == "ubuntu" && node['platform_version'].to_f <= 14.10
+        notifies(
+          :reload_or_try_restart, 'service[prometheus]', :delayed
+        )
+      else
+        notifies(
+          :reload_or_try_restart, 'systemd_unit[prometheus.service]', :delayed
+        )
+      end
     end
   end
 end

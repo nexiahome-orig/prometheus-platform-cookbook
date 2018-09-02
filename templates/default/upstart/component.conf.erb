@@ -1,0 +1,14 @@
+#!upstart
+description "Prometheus platform: <%= @comp %>"
+
+start on starting rc RUNLEVEL=[2345]
+stop on starting rc RUNLEVEL=[016]
+
+console log
+respawn
+respawn limit unlimited
+
+setuid <%= @user %>
+setgid <%= @group %>
+chdir <%= @path %>
+exec <%= @cli %>
