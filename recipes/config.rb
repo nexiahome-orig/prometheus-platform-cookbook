@@ -68,7 +68,7 @@ if prometheus['install?']
       content "#{JSON.parse(rules.to_json).to_yaml}\n"
       if node['platform'] == "ubuntu" && node['platform_version'].to_f <= 14.10
         notifies(
-          :reload_or_try_restart, 'service[prometheus]', :delayed
+          :restart, 'service[prometheus]', :delayed
         )
       else
         notifies(

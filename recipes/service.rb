@@ -18,7 +18,8 @@ auto_restart = node[cookbook_name]['auto_restart']
 
 node[cookbook_name]['components'].each_pair do |comp, config|
   next unless config['install?']
-  configfile = "#{node[cookbook_name]['prefix_home']}/#{comp}/#{comp}.yml"
+  path = "#{node[cookbook_name]['prefix_home']}/#{comp}"
+  configfile = "#{path}/#{comp}.yml"
 
   if node['platform'] == "ubuntu" && node['platform_version'].to_f <= 14.10
     template "/etc/init/#{comp}.conf" do
@@ -30,19 +31,19 @@ node[cookbook_name]['components'].each_pair do |comp, config|
         comp: comp,
         user: node[cookbook_name]['user'],
         group: node[cookbook_name]['group'],
-        path: config['path'],
+        path: path,
         cli: config['cli']
       )
       if auto_restart
-        notifies :try_restart, "service[#{comp}]", :delayed
+        notifies :restart, "service[#{comp}]", :delayed
       end
     end
 
     service comp do
       supports :restart => true
       action [:enable, :start]
-      subscribes :reload_or_try_restart, "file[#{configfile}]" if auto_restart
-      subscribes :try_restart, "service[#{comp}]" if auto_restart
+      subscribes :restart, "file[#{configfile}]" if auto_restart
+      subscribes :restart, "service[#{comp}]" if auto_restart
     end
   else
     systemd_unit "#{comp}.service" do

@@ -269,6 +269,7 @@ node[cookbook_name]['components'].each_pair do |comp, config|
   cli = [bin, opts_to_str(config['cli_opts'])].flatten.join(" \\\n") % keys
   keys[:cli] = cli
   default[cookbook_name]['components'][comp] = interpol(config.to_h, keys)
+  default[cookbook_name]['components'][comp]['cli'] = cli
 end
 
 # Should we restart service after config update?
