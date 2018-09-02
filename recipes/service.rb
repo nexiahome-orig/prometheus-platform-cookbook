@@ -21,7 +21,6 @@ node[cookbook_name]['components'].each_pair do |comp, config|
   configfile = "#{node[cookbook_name]['prefix_home']}/#{comp}/#{comp}.yml"
 
   if node['platform'] == "ubuntu" && node['platform_version'].to_f <= 14.10
-    $stderr.puts config.to_s
     template "/etc/init/#{comp}.conf" do
       source 'upstart/component.conf.erb'
       owner 'root'
@@ -31,8 +30,8 @@ node[cookbook_name]['components'].each_pair do |comp, config|
         comp: comp,
         user: node[cookbook_name]['user'],
         group: node[cookbook_name]['group'],
-        path: config[:path],
-        cli: config[:cli]
+        path: config['path'],
+        cli: config['cli']
       )
       if auto_restart
         notifies :try_restart, "service[#{comp}]", :delayed
