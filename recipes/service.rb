@@ -21,6 +21,7 @@ node[cookbook_name]['components'].each_pair do |comp, config|
   configfile = "#{node[cookbook_name]['prefix_home']}/#{comp}/#{comp}.yml"
 
   if node['platform'] == "ubuntu" && node['platform_version'].to_f <= 14.10
+    $stderr.puts config.to_s
     template "/etc/init/#{comp}.conf" do
       source 'upstart/component.conf.erb'
       owner 'root'
