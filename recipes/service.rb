@@ -23,7 +23,7 @@ node[cookbook_name]['components'].each_pair do |comp, config|
 
   if (node['platform'] == "ubuntu" && node['platform_version'].to_f <= 14.10) || (node['platform'] == "centos" && node['platform_version'].to_f <= 7.0)
     template "/etc/init/#{comp}.conf" do
-      source 'upstart/component.conf.erb'
+      source "upstart/#{node['platform']}-component.conf.erb"
       owner 'root'
       group 'root'
       mode '644'
