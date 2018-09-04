@@ -8,4 +8,4 @@ respawn
 respawn limit unlimited
 
 chdir <%= @path %>
-exec su -s /bin/sh -c 'exec "$0" "$@" >>/var/log/<%= @comp %>.log 2>&1' <%= @user %> -- <%= @cli %>
+exec su -s /bin/sh -c 'exec "$0" "$@" >>/var/log/prometheus/<%= @comp %>.log 2>&1' <%= @user %> -- <%= @cli %>

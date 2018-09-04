@@ -50,6 +50,12 @@ node[cookbook_name]['components'].each_pair do |comp, config|
     version config['version']
   end
 
+  directory '/var/log/prometheus' do
+    owner node[cookbook_name]['user']
+    group node[cookbook_name]['group']
+    mode '0755'
+  end
+
   # Extract all config with word 'path' or 'directory' in their key so we can create dirs
   cli_opts = config['cli_opts'] || {}
   paths = cli_opts.keys.keep_if { |k| k.match(/^(.*\.)?(path|directory)(\..*)?$/) }
