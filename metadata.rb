@@ -6,7 +6,7 @@ description 'Cookbook used to install and configure prometheus'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 source_url 'https://gitlab.com/chef-platform/prometheus-platform'
 issues_url 'https://gitlab.com/chef-platform/prometheus-platform/issues'
-version '2.0.17'
+version '2.0.18'
 
 chef_version '>= 12.14'
 
