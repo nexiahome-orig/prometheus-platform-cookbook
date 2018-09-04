@@ -40,6 +40,7 @@ node[cookbook_name]['components'].each_pair do |comp, config|
     end
 
     service comp do
+      provider Chef::Provider::Service::Upstart
       supports :restart => true
       action [:enable, :start]
       subscribes :restart, "file[#{configfile}]" if auto_restart
