@@ -134,18 +134,18 @@ default[cookbook_name]['components']['prometheus']['config'] = {
       }]
     }]
   },
-  'scrape_configs' => { # will be converted to array (see below)
-    'index_1' =>
-    {
-      'job_name' => 'prometheus',
-      'scrape_interval' => '5s',
-      'static_configs' => {
-        'index_1' => {
-          'targets' => ['localhost:9090', 'localhost:9100']
-        }
-      }
-    }
-  }
+  # 'scrape_configs' => { # will be converted to array (see below)
+  #   'index_1' =>
+  #   {
+  #     'job_name' => 'prometheus',
+  #     'scrape_interval' => '5s',
+  #     'static_configs' => {
+  #       'index_1' => {
+  #         'targets' => ['localhost:9090', 'localhost:9100']
+  #       }
+  #     }
+  #   }
+  # }
   # this scrape_configs entry is equivalent and will be rewritten to:
   # 'scrape_configs' => [
   #   {
