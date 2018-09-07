@@ -122,10 +122,10 @@ default[cookbook_name]['components']['prometheus']['config'] = {
   ],
   'global' => {
     'scrape_interval' => '15s',
-    'evaluation_interval' => '15s',
-    'external_labels' => {
-      'monitor' => 'codelab-monitor'
-    }
+    'evaluation_interval' => '15s'
+    # 'external_labels' => {
+    #   'monitor' => 'codelab-monitor'
+    # }
   },
   'alerting' => {
     'alertmanagers' => [{
