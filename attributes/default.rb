@@ -28,8 +28,8 @@ file = '%<comp>s-%<version>s.linux-amd64.tar.gz'
 default[cookbook_name]['components'] = {
   'prometheus' => {
     'install?' => false,
-    'version' => '2.3.2',
-    'sha' => '351931fe9bb252849b7d37183099047fbe6d7b79dcba013fb6ae19cc1bbd8552'
+    'version' => '2.4.0',
+    'sha' => '87bf22b527d34bb561ae0e93f59d9edd4e53bcd7f28a0b848ac8ca58ff9ff9a9'
   },
   'alertmanager' => {
     'install?' => false,
